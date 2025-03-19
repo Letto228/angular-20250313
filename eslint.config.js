@@ -13,7 +13,18 @@ module.exports = tseslint.config(
       ...angular.configs.tsRecommended,
     ],
     processor: angular.processInlineTemplates,
-    rules: {
+    rules: 
+    {
+      "no-trailing-spaces": "error",  
+      "eol-last": "error", 
+      "eqeqeq": ["error", "always"],
+      "@angular-eslint/component-class-suffix": ["error", { "suffixes": ["Component"] }], 
+      "@angular-eslint/directive-class-suffix": ["error", { "suffixes": ["Directive"] }],
+
+      "@typescript-eslint/no-unused-vars": ["error", { "argsIgnorePattern": "^_" }], 
+      "sort-imports": ["error", { "ignoreDeclarationSort": true }], 
+      "prefer-const": "error",    
+
       "@angular-eslint/directive-selector": [
         "error",
         {
@@ -39,5 +50,13 @@ module.exports = tseslint.config(
       ...angular.configs.templateAccessibility,
     ],
     rules: {},
-  }
+  },
+  {
+    extends: ["plugin:@typescript-eslint/recommended"],
+    rules: {
+    "@typescript-eslint/no-unused-vars": ["warn"],
+    "@typescript-eslint/no-explicit-any": "warn"
+    }
+  }, 
+
 );

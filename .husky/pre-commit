@@ -1,2 +1,1 @@
-npm run prettier:all
-npx eslint .
+npx lint-staged

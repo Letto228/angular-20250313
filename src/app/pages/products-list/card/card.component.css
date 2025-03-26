@@ -1,0 +1,21 @@
+.product-card {
+    max-width: 300px;
+
+    .product-card-image {
+        height: 250px;
+        max-width: 250px;
+    }
+
+    .product-card-footer {
+        padding: 16px;
+    }
+
+    .product-card-name {
+        text-align: center;
+    }
+
+    .product-card-price {
+        text-align: right;
+        padding-right: 15px;
+    }
+}

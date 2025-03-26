@@ -1,0 +1,9 @@
+<mat-card appearance="outlined" class="product-card">
+    <mat-card-content>
+        <img alt="Product Image" class="product-card-image" [src]="product.images[0].url" />
+    </mat-card-content>
+    <mat-card-footer class="product-card-footer">
+        <p class="product-card-name">{{ product.name }}</p>
+        <p class="product-card-price">{{ product.price }}$</p>
+    </mat-card-footer>
+</mat-card>

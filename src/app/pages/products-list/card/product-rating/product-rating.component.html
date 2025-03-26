@@ -1,0 +1,16 @@
+<div class="product-rating__container">
+    <!-- Полные звезды -->
+    @for (_ of Array(fullStars); track _) {
+        <mat-icon class="product-rating__star">star</mat-icon>
+    }
+
+    <!-- Половина звезды -->
+    @if (hasHalfStar) {
+        <mat-icon class="product-rating__star">star_half</mat-icon>
+    }
+
+    <!-- Пустые звезды -->
+    @for (_ of Array(emptyStars); track _) {
+        <mat-icon class="product-rating__star product-rating__star--empty">star_border</mat-icon>
+    }
+</div>

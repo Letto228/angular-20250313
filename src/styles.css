@@ -2,13 +2,32 @@
 
 html,
 body {
+    --primary-color: #06183c;
+
     height: 100%;
 }
+
 body {
     margin: 0;
     font-family: Roboto, 'Helvetica Neue', sans-serif;
+    font-size: 16px;
 }
 
 h1 {
     color: brown;
+}
+
+.course-button {
+    border-radius: 1rem !important;
+    border: 2px solid var(--primary-color) !important;
+    color: var(--primary-color) !important;
+    background-color: white !important;
+    height: 2.8rem !important;
+    padding: 0 1.4rem 0 1.4rem !important;
+
+    font-size: 1rem !important;
+    font-weight: 500 !important;
+    white-space: normal !important;
+    letter-spacing: normal !important;
+    line-height: 1.1rem !important;
 }

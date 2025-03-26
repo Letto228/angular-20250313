@@ -1,0 +1,28 @@
+@if (!!product) {
+    <mat-card appearance="outlined" class="product-card">
+        <mat-card-header class="product-card__header">
+            <img
+                mat-card-image
+                alt="Изображение товара"
+                width="100"
+                height="100"
+                class="product-card__img"
+                [ngSrc]="firstImage?.url ?? ''"
+            />
+        </mat-card-header>
+        <mat-card-content class="product-card__content">
+            <div class="product-card__price">{{ product.price }}₽</div>
+            <span class="product-card__name">{{ product.name }}</span>
+        </mat-card-content>
+        <mat-card-footer class="product-card__footer">
+            <div class="product-card__footer__feedbacks">
+                <mat-icon class="product-card__footer__feedbacks--icon">thumb_up</mat-icon>
+                {{ product.feedbacksCount }}
+            </div>
+            <app-product-rating [rating]="product.rating"></app-product-rating>
+        </mat-card-footer>
+        <mat-card-actions class="product-card__actions">
+            <button mat-button class="course-button">+ Добавить</button>
+        </mat-card-actions>
+    </mat-card>
+}

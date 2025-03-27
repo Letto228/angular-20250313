@@ -1,0 +1,15 @@
+@if(product) {
+    <mat-card class="card" appearance="outlined">
+        <mat-card-header>
+          <mat-card-title>{{product.name}}</mat-card-title>
+        </mat-card-header>
+        <img 
+            mat-card-image 
+            class="card-img"
+            [src]="product.images[0].url"
+        >
+        <mat-card-content class="card-price">
+            Рейтинг продукта - {{product.rating}}
+        </mat-card-content>
+    </mat-card>
+}

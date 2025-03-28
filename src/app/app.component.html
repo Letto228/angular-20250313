@@ -1,2 +1,18 @@
 <app-header></app-header>
-<app-products-list></app-products-list>
+<h1>Hello</h1>
+<!-- <app-products-list></app-products-list> -->
+
+<!-- {{count()}} -->
+{{ doubleCount() }}
+<!-- {{count}} -->
+
+<!--
+    (click)="onLog($event)"
+        |
+        V
+    addEventListener('click', ($event) => {
+        onLog($event)
+    })
+-->
+
+<button (click)="onLog($event)">Rerender</button>

@@ -1,8 +1,15 @@
 <mat-toolbar>
-    <button mat-icon-button aria-label="Example icon-button with menu icon" class="example-icon">
+    <button
+        mat-icon-button
+        aria-label="Example icon-button with menu icon"
+        class="example-icon"
+        (click)="menuClick.emit($event)"
+    >
         <mat-icon>menu</mat-icon>
     </button>
-    <span>My App</span>
+    <!-- <span>{{applicationConfig()?.title}}</span> -->
+    <!-- <span>{{applicationConfig() ? applicationConfig().title : undefined}}</span> -->
+    <span>{{ applicationConfig().title }}</span>
     <span class="example-spacer"></span>
     <button
         mat-icon-button

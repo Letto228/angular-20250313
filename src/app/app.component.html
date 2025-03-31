@@ -1,22 +1,4 @@
-<!-- <app-header applicationConfig="{{appConfig}}"></app-header> -->
-<app-header [applicationConfig]="appConfig" (menuClick)="onMenuClick($event)"></app-header>
-
-<!--
-    (menuClick)="onMenuClick()"
-        |
-        V
-    HeaderComponent.menuClick.subscribe($event => {
-        onMenuClick($event)
-    })
--->
-
-<!-- <app-header></app-header> -->
-<!-- <app-header [config]="appConfig"></app-header> -->
-
-<!-- <app-sidenav
-    [isDrawerOpened]="isDrawerOpenedStore()"
-    (isDrawerOpenedChange)="isDrawerOpenedStore.set($event)"
-></app-sidenav> -->
+<app-header [applicationConfig]="appConfig" (menuClick)="onMenuClick()"></app-header>
 <app-sidenav [(isDrawerOpened)]="isDrawerOpenedStore"></app-sidenav>
 
 <!-- <app-products-list></app-products-list> -->

@@ -17,9 +17,7 @@ export class AppComponent {
 
     readonly isDrawerOpenedStore = signal(false);
 
-    onMenuClick(event: Event) {
-        // eslint-disable-next-line no-console
-        console.log('Menu click', event);
+    onMenuClick() {
         this.isDrawerOpenedStore.update(isOpened => !isOpened);
     }
 }

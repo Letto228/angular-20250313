@@ -13,14 +13,7 @@ import {ApplicationConfig} from '../../shared/application-config/application-con
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class HeaderComponent {
-    // readonly applicationConfig = input<ApplicationConfig | null>(null, {alias: 'config', transform: (inputVa) => });
-    // readonly applicationConfig = input<ApplicationConfig | null>(null);
     readonly applicationConfig = input.required<ApplicationConfig>();
-    // @Input({required: true}) applicationConfig: ApplicationConfig | undefined;
 
-    readonly menuClick = output<Event>();
-
-    // constructor() {
-    //     console.log(this.applicationConfig());
-    // }
+    readonly menuClick = output<void>();
 }

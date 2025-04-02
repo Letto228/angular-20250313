@@ -1,1 +1,7 @@
-<app-card></app-card>
+<div class="container">
+    <div class="g-16 py-4">
+        @for (product of products; track product) {
+            <app-card [product]="product" (buyCard)="onBuyProduct($event)"></app-card>
+        }
+    </div>
+</div>

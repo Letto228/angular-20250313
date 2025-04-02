@@ -1,8 +1,8 @@
-import {ChangeDetectionStrategy, Component} from '@angular/core';
+import {ChangeDetectionStrategy, Component, input, output} from '@angular/core';
 import {MatIconModule} from '@angular/material/icon';
 import {MatButtonModule} from '@angular/material/button';
 import {MatCardModule} from '@angular/material/card';
-import {productsMock} from '../../../shared/products/products.mock';
+import {Product} from '../../../shared/products/product.interface';
 
 @Component({
     selector: 'app-card',
@@ -13,20 +13,17 @@ import {productsMock} from '../../../shared/products/products.mock';
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class CardComponent {
-    readonly product = productsMock[0];
+    readonly product = input.required<Product>();
+    readonly buyCard = output<Product>();
 
-    onProductBuy(event: Event) {
+    onProductBuy(event: Event, product: Product) {
         event.stopPropagation();
 
-        if (!this.product) {
-            return;
-        }
-
         // eslint-disable-next-line no-console
-        console.log('Buy product');
+        this.buyCard.emit(product);
     }
 
     isStarActive(starIndex: number): boolean {
-        return !!this.product && this.product.rating >= starIndex;
+        return !!this.product && this.product().rating >= starIndex;
     }
 }

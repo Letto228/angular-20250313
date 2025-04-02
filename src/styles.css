@@ -9,6 +9,25 @@ body {
     font-family: Roboto, 'Helvetica Neue', sans-serif;
 }
 
-h1 {
-    color: brown;
+.p-1 {
+    padding: 4px;
+}
+
+.py-1 {
+    padding: 4px 0;
+}
+.py-2 {
+    padding: 8px 0;
+}
+.py-3 {
+    padding: 12px 0;
+}
+.py-4 {
+    padding: 16px 0;
+}
+
+.container {
+    max-width: 1248px;
+    padding: 0 16px;
+    margin: 0 auto;
 }

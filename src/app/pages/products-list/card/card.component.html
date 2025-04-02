@@ -1,0 +1,24 @@
+<mat-card appearance="outlined" class="example-card">
+    <mat-card-header>
+        <mat-card-title>{{ product.name }}</mat-card-title>
+    </mat-card-header>
+    <img mat-card-image [src]="mainImage" [alt]="product.name" [style]="imageStyles" />
+    <mat-card-content>
+        <mat-card-subtitle class="price">{{ product.price }} {{ currency }}</mat-card-subtitle>
+        <div class="rating-line">
+            <span class="rating-label">Уже оценили:</span>
+            <div class="rating-stars">
+                @for (star of [1, 2, 3, 4, 5]; track star) {
+                    <mat-icon [color]="star <= roundedRating ? 'primary' : 'disabled'">
+                        star
+                    </mat-icon>
+                }
+                <span class="rating-feedback">({{ product.feedbacksCount }})</span>
+            </div>
+        </div>
+    </mat-card-content>
+    <mat-card-actions class="buttons">
+        <button mat-flat-button>Оценить</button>
+        <button mat-flat-button (click)="onProductBuy($event)">Купить</button>
+    </mat-card-actions>
+</mat-card>

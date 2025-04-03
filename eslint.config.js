@@ -30,6 +30,15 @@ module.exports = tseslint.config(
           style: "kebab-case",
         },
       ],
+      "no-implicit-coercion": [
+        "error",
+        {
+          boolean: true,
+          number: true,
+          string: true,
+          allow: ["!!"],
+        },
+      ],
     },
   },
   {

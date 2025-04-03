@@ -1,1 +1,22 @@
-<app-card></app-card>
+<div class="page">
+    <div class="cart-field">
+        <mat-icon fontIcon="shopping_cart" class="mat-icon-rtl-mirror"></mat-icon>
+
+        Cart:
+        <b>{{ cartItems().length }}</b>
+        items
+    </div>
+
+    <div class="container">
+        <ul>
+            @for (product of products(); track product) {
+                <li>
+                    <app-card
+                        [product]="product"
+                        (addItemToCart)="productToCart($event)"
+                    ></app-card>
+                </li>
+            }
+        </ul>
+    </div>
+</div>

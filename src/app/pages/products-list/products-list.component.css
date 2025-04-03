@@ -1,0 +1,22 @@
+.page {
+    width: 90%;
+    padding-top: 20px;
+    margin: 0 auto;
+}
+
+.container {
+    margin: 0 auto;
+}
+
+ul {
+    list-style-type: none;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.cart-field {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}

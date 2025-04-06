@@ -1,0 +1,9 @@
+<mat-card appearance="outlined" class="example-card">
+    <mat-card-header>
+        <mat-card-title>{{ product.name }}</mat-card-title>
+    </mat-card-header>
+    <img mat-card-image [src]="productImage.url" [alt]="product.name" [style.width.px]="200" />
+    <mat-card-content>
+        <p>Цена: {{ product.price }} ₽</p>
+    </mat-card-content>
+</mat-card>

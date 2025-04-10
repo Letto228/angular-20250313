@@ -15,10 +15,4 @@ import {SidenavComponent} from './core-components/sidenav/sidenav.component';
 })
 export class AppComponent {
     readonly appConfig = applicationConfigMock;
-
-    // readonly isDrawerOpenedStore = signal(false);
-
-    // onMenuClick() {
-    //     this.isDrawerOpenedStore.update(isOpened => !isOpened);
-    // }
 }

@@ -1,4 +1,37 @@
-<app-header [applicationConfig]="appConfig" (menuClick)="onMenuClick()"></app-header>
+<!-- <app-header [applicationConfig]="appConfig" (menuClick)="onMenuClick()"></app-header> -->
+<app-header [applicationConfig]="appConfig" (menuClick)="sidenav.toggleDrawerOpened()"></app-header>
+<!-- <app-sidenav #sidenav [naviagationTemplate]="naviagationTemplate"> -->
+<app-sidenav #sidenav>
+    <!-- <ng-template #naviagationTemplate>
+        {{appConfig.title}}
+        <mat-list role="list">
+            <mat-list-item role="listitem">Item 1</mat-list-item>
+            <mat-list-item role="listitem">Item 2</mat-list-item>
+            <mat-list-item role="listitem">Item 3</mat-list-item>
+        </mat-list>
+    </ng-template> -->
+
+    <!-- <ng-container ngProjectAs="navigation-template"> -->
+    <div ngProjectAs="navigation-template">
+        {{ appConfig.title }}
+        <mat-list role="list">
+            <mat-list-item role="listitem">Item 1</mat-list-item>
+            <mat-list-item role="listitem">Item 2</mat-list-item>
+            <mat-list-item role="listitem">Item 3</mat-list-item>
+        </mat-list>
+    </div>
+    <div ngProjectAs="navigation-template">
+        {{ appConfig.title }}
+        <mat-list role="list">
+            <mat-list-item role="listitem">Item 1</mat-list-item>
+            <mat-list-item role="listitem">Item 2</mat-list-item>
+            <mat-list-item role="listitem">Item 3</mat-list-item>
+        </mat-list>
+    </div>
+    <!-- </ng-container> -->
+
+    <app-products-list></app-products-list>
+</app-sidenav>
 <!-- <app-sidenav [(isDrawerOpened)]="isDrawerOpenedStore"></app-sidenav> -->
 
-<app-products-list></app-products-list>
+<!-- <app-products-list></app-products-list> -->

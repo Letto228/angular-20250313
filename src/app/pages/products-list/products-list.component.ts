@@ -19,5 +19,10 @@ export class ProductsListComponent {
         setTimeout(() => {
             this.products.set(productsMock);
         }, 2000);
+        setTimeout(() => {
+            this.products.set(
+                productsMock.map(product => ({...product, images: [...product.images.reverse()]})),
+            );
+        }, 6000);
     }
 }

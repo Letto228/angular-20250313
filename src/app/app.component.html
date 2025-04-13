@@ -6,10 +6,18 @@
         <mat-list-item role="listitem">Item 3</mat-list-item>
     </mat-list>
 
+    <button (click)="selectTemplate(first)">Open template 1</button>
+    <button (click)="selectTemplate(second)">Open template 2</button>
+
     <app-products-list></app-products-list>
 </app-sidenav>
 
 <!-- Homework stand -->
+
+<app-popup-host
+    [template]="selectedTemplate()"
+    (popupHostClosed)="selectTemplate(null)"
+></app-popup-host>
 
 <!-- Switch template -->
 <!-- <app-popup-host [template]="switchTemplate() ? first : second"></app-popup-host> -->
@@ -27,3 +35,12 @@
     <h2>Second</h2>
     <p>Is second template</p>
 </ng-template> -->
+
+<ng-template #first>
+    <h2>First</h2>
+    <p>Is first template</p>
+</ng-template>
+<ng-template #second>
+    <h2>Second</h2>
+    <p>Is second template</p>
+</ng-template>

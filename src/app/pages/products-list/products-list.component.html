@@ -1,4 +1,4 @@
-@if (products(); as products) {
+@if (getProducts(); as products) {
     @for (product of products; track product._id) {
         <app-card [product]="product"></app-card>
     } @empty {

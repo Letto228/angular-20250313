@@ -6,8 +6,7 @@
 
     <!-- Homework stand -->
 
-
-    <div class="galerey">
+    <!-- <div class="galerey">
         <ng-template
             appCarousel
             let-img
@@ -23,6 +22,24 @@
                 <mat-icon>chevron_right</mat-icon>
             </button>
         </ng-template>
+    </div> -->
+
+    <!-- <div *ngIf="true; ngIf as value"></div> -->
+    <!-- <div *ngIf="true as value"></div> -->
+
+    <!-- <div class="galerey" *appCarousel="let img; let next = next; back as back; of: product().images; appCarouselOf as array"> -->
+    <div
+        *appCarousel="let img; let next = next; back as back; of: product().images as array"
+        class="galerey"
+    >
+        {{ array?.length }}
+        <button mat-icon-button (click)="back()">
+            <mat-icon>chevron_left</mat-icon>
+        </button>
+        <img mat-card-image alt="Product photo" [src]="img.url" />
+        <button mat-icon-button (click)="next()">
+            <mat-icon>chevron_right</mat-icon>
+        </button>
     </div>
 
     <mat-card-content>

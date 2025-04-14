@@ -1,8 +1,7 @@
-import {ChangeDetectionStrategy, Component, signal} from '@angular/core';
+import {ChangeDetectionStrategy, Component, inject} from '@angular/core';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import {CardComponent} from './card/card.component';
-import {productsMock} from '../../shared/products/products.mock';
-import {Product} from '../../shared/products/product.interface';
+import {ProductsStoreService} from '../../shared/products/products-store.service';
 
 @Component({
     selector: 'app-products-list',
@@ -13,16 +12,25 @@ import {Product} from '../../shared/products/product.interface';
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ProductsListComponent {
-    readonly products = signal<Product[] | null>(null);
+    // private readonly productsStoreService = new ProductsStoreService();
+    private readonly productsStoreService = inject(ProductsStoreService);
+
+    // readonly products = signal<Product[] | null>(null);
+    // readonly products = this.productsStoreService.products;
 
     constructor() {
-        setTimeout(() => {
-            this.products.set(productsMock);
-        }, 2000);
-        setTimeout(() => {
-            this.products.set(
-                productsMock.map(product => ({...product, images: [...product.images.reverse()]})),
-            );
-        }, 6000);
+        this.productsStoreService.loadProducts();
+        // setTimeout(() => {
+        //     this.products.set(productsMock);
+        // }, 2000);
+        // setTimeout(() => {
+        //     this.products.set(
+        //         productsMock.map(product => ({...product, images: [...product.images.reverse()]})),
+        //     );
+        // }, 6000);
+    }
+
+    getProducts(): ReturnType<ProductsStoreService['getProducts']> {
+        return this.productsStoreService.getProducts();
     }
 }

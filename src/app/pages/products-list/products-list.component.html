@@ -1,19 +1,3 @@
-<!-- <ng-container #viewport></ng-container> -->
-
-<!-- <ng-template #cardTemplate let-productFromContext="product" let-defaultValue="$implicit">
-    <app-card [product]="defaultValue"></app-card>
-</ng-template> -->
-
-<!-- <ng-template appMyNgFor [appMyNgForOf]="products()" let-product>
-    <app-card [product]="product"></app-card>
-</ng-template> -->
-
-<!-- <ng-template [ngIf]="products()" [ngIfElse]="loaderTemplate" let-products>
-    <ng-template ngFor [ngForOf]="products" [ngForTrackBy]="trackBy" let-product>
-        <app-card [product]="product"></app-card>
-    </ng-template>
-</ng-template> -->
-
 @if (products(); as products) {
     @for (product of products; track product._id) {
         <app-card [product]="product"></app-card>
@@ -23,7 +7,3 @@
 } @else {
     <mat-spinner></mat-spinner>
 }
-
-<!-- <ng-template #loaderTemplate>
-    <mat-spinner></mat-spinner>
-</ng-template> -->

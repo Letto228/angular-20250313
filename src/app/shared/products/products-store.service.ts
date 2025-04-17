@@ -14,8 +14,6 @@ export class ProductsStoreService {
     private loadProductsSubscription: Subscription | null = null;
 
     getProducts(): Product[] | null {
-        // console.log(inject(ProductsApiService));
-
         return this.productsStore();
     }
 

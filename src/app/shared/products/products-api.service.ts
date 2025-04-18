@@ -16,7 +16,6 @@ export class ProductsApiService {
     private readonly httpClient = inject(HttpClient);
 
     getProducts$(): Observable<Product[]> {
-        // return timer(1000).pipe(map(() => productsMock));
         return this.httpClient
             .get<ProductsDto>(`products/suggestion`)
             .pipe(map(({data}: ProductsDto): Product[] => data.items));

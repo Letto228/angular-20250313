@@ -25,6 +25,7 @@ export class CarouselDirective<Data> {
     readonly currentItem = computed(() => this.appCarouselOf()[this.currentIndex()]);
 
     constructor() {
+        // this.viewContainerRef.createComponent(ProductsListComponent, {injector: Injector.create({providers: []})});
         this.updateCurrentIndexByDataChange();
         this.listenCurrentItem();
     }

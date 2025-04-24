@@ -1,12 +1,13 @@
 import {ChangeDetectionStrategy, Component, inject} from '@angular/core';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import {RouterLink} from '@angular/router';
+import {Store} from '@ngrx/store';
 import {CardComponent} from './card/card.component';
 import {ProductsStoreService} from '../../shared/products/products-store.service';
 import {ScrollWithLoadingDirective} from '../../shared/scroll-with-loading/scroll-with-loading.directive';
 import {BrandsService} from '../../shared/brands/brands.service';
-// import {FilterComponent} from './filter/template-driven/filter.component';
-import {FilterComponent} from './filter/reactive/filter.component';
+import {FilterComponent} from './filter/template-driven/filter.component';
+// import {FilterComponent} from './filter/reactive/filter.component';
 
 @Component({
     selector: 'app-products-list',
@@ -25,10 +26,14 @@ import {FilterComponent} from './filter/reactive/filter.component';
 export class ProductsListComponent {
     private readonly productsStoreService = inject(ProductsStoreService);
     private readonly brandsService = inject(BrandsService);
+    private readonly store$ = inject(Store);
 
     constructor() {
         this.productsStoreService.loadProducts();
         this.brandsService.loadBrands();
+
+        // eslint-disable-next-line no-console
+        this.store$.subscribe(console.log);
     }
 
     loadNextProducts(): void {

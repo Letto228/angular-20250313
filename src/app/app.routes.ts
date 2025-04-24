@@ -9,6 +9,7 @@ export const routes: Routes = [
     },
     {
         path: 'products-list',
+        // canDeactivate: [canDeactivateTestGuard],
         loadComponent: () =>
             import('./pages/products-list/products-list.component').then(
                 m => m.ProductsListComponent,
@@ -16,6 +17,7 @@ export const routes: Routes = [
     },
     {
         path: 'product',
+        // canActivate: [canActivateTestGuard],
         loadChildren: () => import('./pages/product/product.routes').then(m => m.routes),
     },
     {

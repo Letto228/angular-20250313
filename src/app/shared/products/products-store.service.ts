@@ -1,13 +1,16 @@
 import {inject, Injectable, signal} from '@angular/core';
 import {Subscription} from 'rxjs';
+import {Store} from '@ngrx/store';
 import {ProductsApiService} from './products-api.service';
 import {Product} from './product.interface';
+import {addProducts} from '../../store/products/products.actions';
 
 @Injectable({
     providedIn: 'root',
 })
 export class ProductsStoreService {
     private readonly productsApiService = inject(ProductsApiService);
+    private readonly store$ = inject(Store);
 
     private loadProductsSubscription: Subscription | null = null;
     private loadCurrentProductSubscription: Subscription | null = null;
@@ -32,6 +35,8 @@ export class ProductsStoreService {
             .getProducts$()
             .subscribe(products => {
                 this.productsStore.set(products);
+
+                this.store$.dispatch(addProducts(products));
 
                 this.loadProductsSubscription = null;
             });

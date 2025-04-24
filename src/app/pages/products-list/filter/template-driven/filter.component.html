@@ -1,7 +1,15 @@
 <form #ngFormDirective="ngForm" class="filter" (ngSubmit)="onChange(ngFormDirective.value)">
     <mat-form-field appearance="fill">
         <mat-label>Search</mat-label>
-        <input matInput name="search" [ngModel]="''" />
+        <input
+            #searchModel="ngModel"
+            matInput
+            name="search"
+            appIsStringValidator
+            required
+            [ngModel]="''"
+            [minlength]="3"
+        />
     </mat-form-field>
 
     @if (brands()) {
@@ -29,3 +37,5 @@
 
     <button type="submit">Submit</button>
 </form>
+
+{{ searchModel.errors | json }}

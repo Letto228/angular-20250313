@@ -1,3 +1,5 @@
+<app-filter [brands]="getBrands()"></app-filter>
+
 @if (getProducts(); as products) {
     <div appScrollWithLoading class="scroll-container" (loadNextData)="loadNextProducts()">
         @for (product of products; track product._id) {

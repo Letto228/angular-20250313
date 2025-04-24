@@ -1,5 +1,7 @@
 import {Directive, signal} from '@angular/core';
 
+// <div appInsertShadow #sshadowDirective="appInsertShadow">
+
 @Directive({
     selector: '[appInsertShadow]',
     standalone: true,
@@ -7,6 +9,7 @@ import {Directive, signal} from '@angular/core';
         '[style.boxShadow]': 'boxShadow()',
         '(click)': 'toggleShadow()',
     },
+    exportAs: 'appInsertShadow',
 })
 export class InsertShadowDirective {
     readonly boxShadow = signal('');

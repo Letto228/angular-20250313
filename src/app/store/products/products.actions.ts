@@ -5,11 +5,6 @@ export enum ProductsActionTypes {
     AddProducts = '[Products] Add products',
 }
 
-export const addProducts = createAction(
-    ProductsActionTypes.AddProducts, // type
-    (products: Product[]) => ({products}), // creator
-);
-
-// addProducts ~ (...creatorArguments) => ({type: ProductsActionTypes.AddProducts, ...creator(creatorArguments)})
-
-// addProducts([...]) = {type: ProductsActionTypes.AddProducts, products: [...]}
+export const addProducts = createAction(ProductsActionTypes.AddProducts, (products: Product[]) => ({
+    products,
+}));

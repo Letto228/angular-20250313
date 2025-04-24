@@ -1,7 +1,5 @@
 import {Directive, signal} from '@angular/core';
 
-// <div appInsertShadow #sshadowDirective="appInsertShadow">
-
 @Directive({
     selector: '[appInsertShadow]',
     standalone: true,

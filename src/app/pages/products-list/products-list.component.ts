@@ -5,8 +5,8 @@ import {CardComponent} from './card/card.component';
 import {ProductsStoreService} from '../../shared/products/products-store.service';
 import {ScrollWithLoadingDirective} from '../../shared/scroll-with-loading/scroll-with-loading.directive';
 import {BrandsService} from '../../shared/brands/brands.service';
-import {FilterComponent} from './filter/template-driven/filter.component';
-// import {FilterComponent} from './filter/reactive/filter.component';
+// import {FilterComponent} from './filter/template-driven/filter.component';
+import {FilterComponent} from './filter/reactive/filter.component';
 
 @Component({
     selector: 'app-products-list',

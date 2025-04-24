@@ -31,9 +31,6 @@ export class ProductsListComponent {
     constructor() {
         this.productsStoreService.loadProducts();
         this.brandsService.loadBrands();
-
-        // eslint-disable-next-line no-console
-        this.store$.subscribe(console.log);
     }
 
     loadNextProducts(): void {

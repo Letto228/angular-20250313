@@ -4,7 +4,6 @@ import {FormArray, FormControl, FormGroup, ReactiveFormsModule, Validators} from
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import {MatInputModule} from '@angular/material/input';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
-import {map, startWith} from 'rxjs';
 import {CounterInputComponent} from '../../../../shared/counter-input/counter-input.component';
 import {isStringValidator} from './is-string.validator';
 
@@ -43,32 +42,14 @@ export class FilterComponent {
             validators: [isStringValidator, Validators.minLength(3)],
         }),
         brands: new FormArray<FormControl<boolean>>([]),
-        priceRange: new FormGroup(
-            {
-                min: new FormControl(0),
-                max: new FormControl(999999),
-            },
-            {
-                validators: [],
-            },
-        ),
+        priceRange: new FormGroup({
+            min: new FormControl(0),
+            max: new FormControl(999999),
+        }),
     });
 
-    readonly error$ = this.form.get('search')?.statusChanges.pipe(
-        // map(() => this.form.get('search')?.errors),
-        map(status => (status === 'INVALID' ? this.form.get('search')?.errors : null)),
-        startWith(this.form.get('search')?.errors),
-    );
-
     constructor() {
-        setTimeout(() => {
-            this.form.get('search')?.setValue('123');
-        }, 5000);
         this.listenBrandsChange();
-    }
-
-    getError() {
-        return this.form.get('search')?.errors;
     }
 
     private listenBrandsChange() {

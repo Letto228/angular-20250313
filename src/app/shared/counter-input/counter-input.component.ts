@@ -27,8 +27,6 @@ export class CounterInputComponent implements ControlValueAccessor {
     readonly counter = signal(0);
 
     writeValue(newCounter: number): void {
-        // eslint-disable-next-line no-console
-        console.log('newCounter', newCounter);
         this.counter.set(newCounter);
     }
 

@@ -1,10 +1,9 @@
 import {CommonModule} from '@angular/common';
-import {ChangeDetectionStrategy, Component, effect, input} from '@angular/core';
+import {ChangeDetectionStrategy, Component, computed, effect, input, signal} from '@angular/core';
 import {FormArray, FormControl, FormGroup, ReactiveFormsModule} from '@angular/forms';
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import {MatInputModule} from '@angular/material/input';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
-import {map} from 'rxjs';
 import {CounterInputComponent} from '../../../../shared/counter-input/counter-input.component';
 
 @Component({
@@ -24,7 +23,15 @@ import {CounterInputComponent} from '../../../../shared/counter-input/counter-in
     ],
 })
 export class FilterComponent {
-    brands = input<string[] | null>(null);
+    private readonly brandsFormLength = signal(0);
+
+    readonly brands = input<string[] | null>(null);
+
+    readonly needBrandsView = computed(() => {
+        const brands = this.brands();
+
+        return brands && brands.length === this.brandsFormLength();
+    });
 
     readonly minControl = new FormControl(0);
     readonly searchControl = new FormControl('Egor');
@@ -39,37 +46,20 @@ export class FilterComponent {
     });
 
     constructor() {
-        // this.form.get('search');
-        this.form.valueChanges
-            .pipe(
-                map(formValue => ({
-                    ...formValue,
-                    brands: formValue.brands
-                        ?.map((flag, index) => flag && this.brands()?.[index])
-                        .filter(Boolean),
-                })),
-            )
-            // eslint-disable-next-line no-console
-            .subscribe(console.log);
-
-        // setTimeout(() => {
-        //     this.minControl.setValue(100);
-        //     this.minControl.disable();
-        // }, 1000);
-
-        // this.minControl.valueChanges.subscribe(newValue => {
-        //     console.log('Its new value by FilterComponent', newValue);
-        // });
-
         this.listenBrandsChange();
     }
 
     private listenBrandsChange() {
-        effect(() => {
-            const brandsControls = this.brands()?.map(() => new FormControl(false)) || [];
-            const brandsForm = new FormArray(brandsControls as Array<FormControl<boolean>>);
+        effect(
+            () => {
+                const brandsControls = this.brands()?.map(() => new FormControl(false)) || [];
+                const brandsForm = new FormArray(brandsControls as Array<FormControl<boolean>>);
 
-            this.form.setControl('brands', brandsForm);
-        });
+                this.form.setControl('brands', brandsForm);
+
+                this.brandsFormLength.set(brandsForm.length);
+            },
+            {allowSignalWrites: true},
+        );
     }
 }

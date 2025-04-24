@@ -1,19 +1,24 @@
 <form [formGroup]="form">
     <mat-form-field appearance="fill">
         <mat-label>Search</mat-label>
-        <!-- <input [formControl]="searchControl" matInput /> -->
         <input formControlName="search" matInput />
     </mat-form-field>
 
-    <div *ngIf="brands; else loaderTemplateRef" formArrayName="brands" class="checkbox-container">
-        <mat-checkbox *ngFor="let brand of brands(); let index = index" [formControlName]="index">
-            {{ brand }}
-        </mat-checkbox>
-    </div>
+    @if (needBrandsView()) {
+        <div formArrayName="brands" class="checkbox-container">
+            @for (brand of brands(); track brand; let index = $index) {
+                <mat-checkbox [formControlName]="index">
+                    {{ brand }}
+                </mat-checkbox>
+            }
+        </div>
+    } @else {
+        <mat-spinner diameter="60" class="loader"></mat-spinner>
+    }
+
     <div formGroupName="priceRange" class="price-range">
         <div>
             Min
-            <!-- <app-counter-input [formControl]="minControl" [step]="5"></app-counter-input> -->
             <app-counter-input formControlName="min" [step]="5"></app-counter-input>
         </div>
         <div>
@@ -22,7 +27,3 @@
         </div>
     </div>
 </form>
-
-<ng-template #loaderTemplateRef>
-    <mat-spinner diameter="60" class="loader"></mat-spinner>
-</ng-template>

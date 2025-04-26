@@ -1,4 +1,4 @@
-import {ChangeDetectionStrategy, Component, InjectionToken, Injector} from '@angular/core';
+import {ChangeDetectionStrategy, Component} from '@angular/core';
 import {MatListModule} from '@angular/material/list';
 import {RouterOutlet} from '@angular/router';
 import {HeaderComponent} from './core-components/header/header.component';
@@ -22,35 +22,4 @@ import {InsertShadowDirective} from './shared/insert-shadow/insert-shadow.direct
 })
 export class AppComponent {
     readonly appConfig = applicationConfigMock;
-
-    constructor() {
-        const token = new InjectionToken('');
-        const copyToken = new InjectionToken('');
-        const injector = Injector.create({
-            providers: [
-                {
-                    provide: token,
-                    useValue: 'Egor',
-                    // multi: true,
-                },
-                {
-                    provide: copyToken,
-                    useExisting: token,
-                },
-                // {
-                //     provide: token,
-                //     useValue: 'Alex',
-                //     multi: true,
-                // },
-                // {
-                //     provide: token,
-                //     useValue: 'Evgen',
-                //     multi: true,
-                // },
-            ],
-        });
-
-        // eslint-disable-next-line no-console
-        console.log(injector.get(token));
-    }
 }

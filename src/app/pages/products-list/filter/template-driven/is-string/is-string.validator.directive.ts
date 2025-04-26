@@ -1,4 +1,4 @@
-import {Directive, ElementRef, inject} from '@angular/core';
+import {Directive} from '@angular/core';
 import {AbstractControl, NG_VALIDATORS, ValidationErrors, Validator} from '@angular/forms';
 
 @Directive({
@@ -14,11 +14,7 @@ import {AbstractControl, NG_VALIDATORS, ValidationErrors, Validator} from '@angu
     ],
 })
 export class IsStringValidatorDirective implements Validator {
-    private readonly element = inject(ElementRef).nativeElement;
-
     validate(control: AbstractControl): ValidationErrors | null {
-        // ....element calculate;
-
         return Number(control.value) ? {isString: 'Is string validator error'} : null;
     }
 }

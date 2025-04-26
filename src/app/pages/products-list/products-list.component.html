@@ -1,7 +1,7 @@
 <app-filter [brands]="getBrands()"></app-filter>
 
-@if (products$ | async; as products) {
-    <div appScrollWithLoading class="scroll-container" (loadNextData)="loadNextProducts()">
+@if (products(); as products) {
+    <div appScrollWithLoading class="scroll-container">
         @for (product of products; track product._id) {
             <app-card
                 class="card"

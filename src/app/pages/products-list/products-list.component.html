@@ -1,5 +1,7 @@
-<div class="row">
-    <app-product-card [product]="firstProduct"></app-product-card>
-    <app-product-card [product]="ProductList[1]"></app-product-card>
-    <app-product-card [product]="ProductList[2]"></app-product-card>
-</div>
+@if (ProductList) {
+    <div class="row">
+        @for (product of ProductList; track $index) {
+            <app-product-card [product]="product"></app-product-card>
+        }
+    </div>
+}

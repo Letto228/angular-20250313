@@ -6,7 +6,7 @@
     margin-bottom: 15px;
 
     .product-card {
-        width: 375px;
+        width: 100%;
     }
 
     .card-footer {
@@ -22,7 +22,7 @@
     }
 
     img {
-        max-width: 100%;
+        max-width: 375px;
         max-height: 400px;
         margin-top: auto;
     }

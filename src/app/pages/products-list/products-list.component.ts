@@ -1,6 +1,7 @@
-import {ChangeDetectionStrategy, Component} from '@angular/core';
+import {ChangeDetectionStrategy, Component, signal} from '@angular/core';
 import {CardComponent} from './card/card.component';
 import {productsMock} from '../../shared/products/products.mock';
+import {Product} from '../../shared/products/product.interface';
 
 /** Компонент списка товаров */
 @Component({
@@ -12,11 +13,9 @@ import {productsMock} from '../../shared/products/products.mock';
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ProductsListComponent {
+    readonly productCards = signal<Product[]>(this.ProductList);
+
     get ProductList() {
         return productsMock;
-    }
-
-    get firstProduct() {
-        return productsMock[0];
     }
 }

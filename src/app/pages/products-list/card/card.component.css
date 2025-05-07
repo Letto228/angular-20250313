@@ -32,3 +32,14 @@
     color: yellow;
     text-shadow: 0 0 2px black;
 }
+.product-card__footer {
+    display: flex;
+    justify-content: space-between;
+}
+.ml-auto {
+    margin-left: auto;
+}
+
+.color-danger {
+    color: red;
+}

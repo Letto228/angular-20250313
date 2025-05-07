@@ -19,10 +19,12 @@
             </div>
         </mat-card-content>
         <mat-card-actions class="product-card__footer">
-            <button mat-button (click)="toFavorite($event)">
-                <mat-icon title="Добавить в избранное" [class.color-danger]="isFavorite">
-                    thumb_up
-                </mat-icon>
+            <button
+                mat-button
+                [title]="isFavorite ? 'Убрать из избранного' : 'Добавить в избранное'"
+                (click)="toFavorite($event)"
+            >
+                <mat-icon [class.color-success]="isFavorite">thumb_up</mat-icon>
             </button>
             <button mat-button class="ml-auto" (click)="addItem($event)">
                 <mat-icon title="Добавить в корзину">add</mat-icon>
